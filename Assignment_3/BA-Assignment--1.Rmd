@@ -1,0 +1,171 @@
+---
+title: "Practice"
+author: "Aman"
+date: "2024-02-06"
+output: html_document
+---
+
+# The below data is classified into four categories, ie. Genre, drinks, food and experience. It contains nine differet data sets combined together and perfomred as single data aalysis.
+
+## The analysis is performed considereing each group individually and then combined the final result and named the final data as "md".
+
+### Group1
+```{r}
+sleepless_statistician <- data.frame(
+   genre = c("O","C","C","O","H"),
+  exp = c("L","M","L","M","H"),
+  drinks = c(2,0,2,1,1),
+  food = c(15,0,10,20,10)
+)
+
+```
+```{r}
+write.csv(sleepless_statistician,"a1.csv")
+```
+
+### Group2
+```{r}
+The_Griffindoors <- data.frame(
+   genre = c("C","A","A","H","O"),
+  exp = c("L","L","L","L","L"),
+  drinks = c(0,1,1,0,0),
+  food = c(250,150,120,100,100)
+)
+```
+```{r}
+write.csv(The_Griffindoors,"a2.csv")
+```
+
+### Group3
+```{r}
+Shamdata <- data.frame(
+   genre = c("A","A","C","C","A"),
+  exp = c("L","H","L","M","M"),
+  drinks = c(0,2,0,0,1),
+  food = c(20,300,90,20,70)
+)
+```
+```{r}
+write.csv(Shamdata,"a3.csv")
+```
+
+### Group4
+
+```{r}
+R_Flashes <-  data.frame(
+   genre = c("C","C","O","A","A"),
+  exp = c("L","H","L","L","H"),
+  drinks = c(2,6,1,0,3),
+  food = c(20,50,30,20,25)
+)
+write.csv(R_Flashes,"a4.csv")
+```
+### Group5
+
+```{r}
+psfjk <- data.frame(
+   genre = c("A","H","A","A","C"),
+  exp = c("H","M","H","H","L"),
+  drinks = c(3,2,1,1,0),
+  food = c(0,50,400,432,30)
+)
+write.csv(R_Flashes,"a5.csv")
+```
+
+### Group6
+
+```{r}
+JOHN_GROUP <- data.frame(
+   genre = c("C","C","O","A","A"),
+  exp = c("L","H","L","L","H"),
+  drinks = c(2,6,1,0,1),
+  food = c(20,50,30,20,35)
+)
+write.csv(JOHN_GROUP,"a6.csv")
+
+```
+
+### Group7
+
+```{r}
+Golden_Flashes <- data.frame(
+   genre = c("A","C","A","A","A"),
+  exp = c("L","M","M","M","H"),
+  drinks = c(4,3,2,2,6),
+  food = c(40,15,50,50,100)
+)
+write.csv(Golden_Flashes,"a7.csv")
+```
+
+### Group8
+
+```{r}
+FAB_5 <- data.frame(
+   genre = c("O","H","C","A","A","A"),
+  exp = c("L","L","L","L","L","L"),
+  drinks = c(2,1,1,1,2,2),
+  food = c(200,70,245,245,90,45) 
+)
+write.csv(FAB_5,"a8.csv")
+
+```
+
+### Group9
+```{r}
+Sahil_Group <- data.frame(
+   genre = c("A","C","A","H","C"),
+  exp = c("L","M","L","L","M"),
+  drinks = c(4,3,2,2,2),
+  food = c(32,22,25,15,40)
+)
+write.csv(Sahil_Group,"a9.csv")
+```
+
+## Assigning the variables with each individual group names
+
+```{r}
+a1 <- sleepless_statistician
+a2 <- The_Griffindoors
+a3 <- Shamdata
+a4 <- R_Flashes
+a5 <- psfjk
+a6 <- JOHN_GROUP
+a7 <- Golden_Flashes
+a8 <- FAB_5
+a9 <- Sahil_Group
+```
+```{r}
+
+```
+
+## Combining all the table data with rbind function
+
+```{r}
+md <- rbind(a1,a2,a3,a4,a5,a6,a7,a8,a9)
+md
+```
+
+## Analysing the descriptive statistics on the variables variables -
+### In the summary we can see that the maximum number of drinks consumed in a single day is 6 and the maximum amount spend on food in a single day is $432 and the average amount spend on daily food is $81.98.
+```{r}
+summary(md)
+class(md)
+dim(md)
+```
+***
+## Box plot for continious variables
+```{r}
+boxplot(md$food~md$genre)
+```
+## In the plot for genre and food the box indicates that the range in which the middle 50% of all data lies. Thus the lower end of the box is the first quartile and the upper end is the 3rd quartile. In the box plot the solid line indicates the median and the points that lies out side the are the outliers. 
+
+```{r}
+boxplot(md$drinks~md$genre)
+```
+## In the plot for genre vs drinks indicate that the higest number of drinks in a single day is 6 and their is few outliers.
+```{r}
+library(esquisse)
+esquisser(md)
+```
+
+
