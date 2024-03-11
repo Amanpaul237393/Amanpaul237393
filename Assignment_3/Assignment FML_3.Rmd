@@ -1,0 +1,110 @@
+---
+title: "Assignment_3 FML"
+author: "Aman"
+date: "2024-03-10"
+output: html_document
+---
+
+#Summary- Firstly I have imported the data set into the R studio then I executed by loading the necessary pacakges in R libraries these libraries has the functions and tools for working with algorithms. Next, I split the data set into 60% training data set and 40% validation.I melted the training data to specify the columns as CC and Personal loan as identifier variables and Online as variable,then I created the pivot table considering column 1 and 2 will correspond to CC and Personal loan and column 14 as the level of Online variable. From the table, we could say about 1924 customers used online banking but however didn’t take credit card or load and 77 customers who using online banking service also took out personal loan and credit card.
+#For analysis, I used Naive Bayes it assumes that the occurrence of each variable. After comparing the values we can see the the values for the probability of a customer having loan given to having CC and using Online services came out same. 
+
+#Loading the Packages 
+```{r}
+library(readr)
+library(reshape2)
+library(e1071)
+UniversalBank <- read.csv("C:/Users/amanp/Downloads/UniversalBank.csv")
+View(UniversalBank)
+```
+
+#Partition the data into training (60%) and validation (40%) sets.
+```{r}
+set.seed(1)
+train.data <- sample(row.names(UniversalBank),0.6*dim(UniversalBank)[1])
+valid.data <- setdiff(row.names(UniversalBank),train.data)
+train.Bank <- UniversalBank[train.data,]
+valid.Bank <- UniversalBank[valid.data,]
+```
+
+#A. Creating a Pivot table with training data
+```{r}
+melted.bank = melt(train.Bank,id=c("CreditCard","Personal.Loan"),variable= "Online")
+recast.bank=dcast(melted.bank,CreditCard+Personal.Loan~Online)
+recast.bank[,c(1:2,14)]
+```
+
+#B.Considering the above data the probablity that the customers will accept the loan offer .
+```{r}
+count_column <- ncol(recast.bank)
+Probability1 <- 77/3000
+count_column
+Probability1
+```
+
+#c.Two separate pivot tables for the training data. One will have Loan (rows) as a function of Online (columns) and the other will have Loan (rows) as a function of CC
+```{r}
+m.bankc1 = melt(train.Bank,id=c("Personal.Loan"),variable = "Online")
+m.bankc2 = melt(train.Bank,id=c("CreditCard"),variable = "Online")
+
+##The below code creates a pivot table where column 1 and 2 will correspond to “Credit Card” and ” Personal Loan” and column 14 as the  “Online” variable.
+recast.bankc1=dcast(m.bankc1,Personal.Loan~Online)
+recast.bankc2=dcast(m.bankc2,CreditCard~Online)
+Loan=recast.bankc1[,c(1,13)]
+CC = recast.bankc2[,c(1,14)]
+
+##Pivot table for Loan
+Loan
+##Pivot table for Loan
+CC
+```
+#D.Compute the following quantities [P(A | B) means “the probability ofA given B”]:
+##P(CC = 1 | Loan = 1) (the proportion of credit card holders among the loan acceptors)
+##P(Online = 1 | Loan = 1)
+##P(Loan = 1) (the proportion of loan acceptors)
+##P(CC = 1 | Loan = 0)
+##P(Online = 1 | Loan = 0)
+##P(Loan = 0)
+```{r}
+
+table(train.Bank[,c(14,10)])
+table(train.Bank[,c(13,10)])
+table(train.Bank[,c(10)])
+```
+```{r}
+# E.Compute the naive Bayes probability 
+
+Probability2 <- ((77/(77+198))*(166/(166+109))*(275/(275+2725)))/(((77/(77+198))*(166/(166+109))*(275/(275+2725)))+((801/(801+1924))*(1588/(1588+1137))*2725/(2725+275)))
+Probability2
+```
+#F.Comparing the value with the one obtained from the pivot table in (B)
+```{r}
+Comparison <- abs(Probability2 - Probability1) 
+if (Comparison< 0.1) { 
+print("The estimates are very close, and both methods seem accurate.") 
+} else { 
+print("There is a significant difference between the estimates. Further investigation may be needed.") 
+} 
+
+```
+
+
+#G.Run naive Bayes on the data- On comparing the previous method it shows almost the same result for the chosen parameters.
+```{r}
+
+naive.train = train.Bank[,c(10,13:14)]
+naive.test = valid.Bank[,c(10,13:14)]
+naivebayes = naiveBayes(Personal.Loan~.,data=naive.train)
+naivebayes
+```
+```{r}
+P1 <- 0.280000 
+P2<- 0.6036364 
+P3<- 0.09166667 
+P4 <- 0.293945 
+P5 <- 0.5827523
+
+Prob <- (P1*P2*P3)/(P4*P5)
+Prob
+#Comparing the value with E, the value is very close.
+```
+
