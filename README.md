@@ -1,13 +1,16 @@
-<img align="center" src="https://github.com/Amanpaul237393/Amanpaul237393/blob/main/GH.jpg">
+
+# <p align="center">![pic](https://github.com/Amanpaul237393/Amanpaul237393/blob/main/GH.jpg)</p>
+
+
 <h1>Hi 👋, I'm Aman Paul Chowdhury</h1>
 <h3>A passionate Data Professional and Coder</h3>
 <img align="right" alt="coding" width="400" src="https://www.codium.ai/wp-content/uploads/2023/10/how-does-code-integrity-work.gif">
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=amanpaul237393&label=Profile%20views&color=0e75b6&style=flat" alt="amanpaul237393" /> </p>
 
-- 🔭 I’m currently working on **Food-delivery app**
+- 🔭 I’m currently working on **Building Projects**
 
-- 🌱 I’m currently learning **Machine Learning, AI, Full-stack web development**
+- 🌱 I’m currently learning **Machine Learning, AI, Front-end web development**
 
 - 👨‍💻 All of my projects are available at [https://github.com/Amanpaul237393](https://github.com/Amanpaul237393)
 
