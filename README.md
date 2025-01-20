@@ -10,11 +10,11 @@
 
 - 🔭 I’m currently working on **Building Projects**
 
-- 🌱 I’m currently learning **Machine Learning, AI, Front-end web development**
+- 🌱 I’m currently learning **Machine Learning, AI, Data Analytics, Project Management**
 
 - 👨‍💻 All of my projects are available at [https://github.com/Amanpaul237393](https://github.com/Amanpaul237393)
 
-- 💬 Ask me about **Python, R , React.Js, Node.JS, HTML, CSS, JavaScript, SQL, Django, Tailwind**
+- 💬 Ask me about **Python, R, SQL, Oracle, My SQL, DataBase Management, Jira, Confluence, Tableau, Power BI**
 
 - 📫 How to reach me **amanpaulchowdhury@gmail.com**
 
